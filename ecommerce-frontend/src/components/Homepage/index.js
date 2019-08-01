@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Button, Card} from "react-bootstrap";
-import api from "../commons/api";
+import api from "../../commons/api";
 
-export class Homepage extends Component {
+export default class Homepage extends Component {
     constructor(props) {
         super(props);
         this.state = {celulares: []};
