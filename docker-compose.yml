@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+
+  ecommerce-frontend:
+    container_name: ecommerce-frontend
+    hostname: ecommerce-frontend
+    image: leonildoalbani/ecommerce-frontend:latest
+    restart: always
+    links:
+      - ecommerce-backend
+    ports:
+      - "80:80/tcp"
+    volumes:
+      - ${PWD}/volumes/frontend:/etc/nginx/conf.d
+
+  ecommerce-backend:
+    container_name: ecommerce-backend
+    hostname: ecommerce-backend
+    image: leonildoalbani/ecommerce-backend:latest
+    restart: always
+    links:
+      - ecommerce-banco
+    ports:
+      - "8080:8080/tcp"
+#    depends_on:
+#      - ecommerce-banco
+
+  ecommerce-banco:
+    container_name: ecommerce-banco
+    hostname: ecommerce-banco
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "ecommerce"
+    ports:
+      - "15432:5432"
+
+
+#      quarkus:
+#        datasource:
+#          url: "jdbc:postgresql://ecommerce-banco:15432/ecommerce"
+#          driver: "org.postgresql.Driver"
+#          username: "postgres"
+#          password: "postgres"
+#        hibernate-orm:
+#          database:
+#            generation: "update"
+#          log:
+#            sql: true
