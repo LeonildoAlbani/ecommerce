@@ -1,4 +1,8 @@
-import {createStore} from 'redux';
+import {applyMiddleware, createStore} from 'redux';
+import { default as thunk } from 'redux-thunk';
+//import promise from "redux-promise-middleware"; TODO - verificar se vai ser necessário
+import {createLogger } from 'redux-logger';
+import * as api from "../commons/api";
 
 const INITIAL_STATE = {
     celulares: [{id:1}],
@@ -11,27 +15,27 @@ function reducer(state = INITIAL_STATE, action) {
     if (action.type === 'ADICIONAR_NO_CARRINHO') {
         return {...state, carrinho: [...state.carrinho, action.celular]};
     }
-    //
-    // return api.get("/celular")
-    //     .then(response => {
-    //         console.log("teste2");
-    //
-    //         return {
-    //             celulares:response,
-    //             carrinho:[]
-    //         }
-    //     })
-    //     .catch(error => {
-    //         console.error(error);
-    //         return {
-    //             celulares:[],
-    //             carrinho:[]
-    //         }
-    //     });
+    if (action.type === 'CARREGAMENTO_INICIAL') {
+        return {...state, celulares: [...action.celulares]};
+    }
 
     return state
 }
 
-const store = createStore(reducer);
+const middleware = applyMiddleware(thunk, createLogger());
+const store = createStore(reducer, middleware);
+
+store.dispatch((dispatch) => {
+
+    return api.get("/celular")
+        .then(response => {
+            //TODO - usar action
+            dispatch({type: "CARREGAMENTO_INICIAL", celulares: response})
+            //Actions.carregamentoInicial(response);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+});
 
 export default store;

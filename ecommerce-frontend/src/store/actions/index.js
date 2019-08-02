@@ -4,3 +4,10 @@ export function adicionarNoCarrinho(celular) {
         celular
     }
 }
+
+export function carregamentoInicial(celulares) {
+    return {
+        type: 'CARREGAMENTO_INICIAL',
+        celulares
+    }
+}
