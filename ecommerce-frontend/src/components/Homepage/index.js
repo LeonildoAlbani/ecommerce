@@ -1,40 +1,37 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from "redux";
+
 import {Button, Card} from "react-bootstrap";
-import api from "../../commons/api";
+import * as Actions from '../../store/actions';
 
-export default class Homepage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {celulares: []};
-        api.get("/celular")
-            .then(response => {
-                console.log(response);
-                this.setState({...this.state, celulares: response})
-            })
-            .catch(error => {
-                console.log(error)
-            });
-    }
+const Homepage = ({celulares, carrinho, adicionarNoCarrinho}) => (
+    <div>
+        {JSON.stringify(carrinho)}
+        {celulares.length > 0 ? celulares.map(celular => {
+            return (
+                <Card key={celular.id} style={{width: '18rem'}}>
+                    {/*<Card.Img style={{height: '30rem'}} variant="top" src="https://t.tudocdn.net/227370?w=60&h=120&fit=clip" />*/}
+                    <Card.Body>
+                        <Card.Title>{celular.modelo}</Card.Title>
+                        <Card.Text>
+                            R$ {celular.preco}
+                        </Card.Text>
+                        <Button variant="primary"
+                                onClick={() => adicionarNoCarrinho(celular)}>Comprar</Button>
+                    </Card.Body>
+                </Card>
+            )
+        }) : <div>Nenhum celular</div>}
 
-    render() {
-        return (
-            <div>
-                {this.state.celulares.length > 0 ? this.state.celulares.map(celular => {
-                    return (
-                        <Card style={{width: '18rem'}}>
-                            {/*<Card.Img style={{height: '30rem'}} variant="top" src="https://t.tudocdn.net/227370?w=60&h=120&fit=clip" />*/}
-                            <Card.Body>
-                                <Card.Title>{celular.modelo}</Card.Title>
-                                <Card.Text>
-                                    R$ {celular.preco}
-                                </Card.Text>
-                                <Button variant="primary">Comprar</Button>
-                            </Card.Body>
-                        </Card>
-                    )
-                }) : <div>Nenhum celular</div>}
+    </div>
+);
 
-            </div>
-        )
-    }
-}
+const mapStateToProps = state => ({
+    celulares: state.celulares,
+    carrinho: state.carrinho
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(Actions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
