@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
+import 'font-awesome/css/font-awesome.min.css';
 
 import Homepage from "./components/Homepage";
 import Carrinho from "./components/Carrinho";
