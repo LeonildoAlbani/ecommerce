@@ -1,15 +1,16 @@
 package org.acme.ecommerce.celular;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
-import java.math.BigDecimal;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 /**
  * Representa os objetos que podem ser comprados.
  * <p>
- * Caso tivesse mais tempo e fosse algo mais definitivo, nunca criaria uma classe específica assim.
- * Provavelmente criaria uma classe "Produto" ou algo do gênero para representar o que está sendo comprado.
+ * Caso tivesse mais tempo e fosse algo mais definitivo, nunca criaria uma classe específica assim. Provavelmente
+ * criaria uma classe "Produto" ou algo do gênero para representar o que está sendo comprado.
  *
  * @author leonildo.albani
  * @since 1.0 (31/07/2019)
@@ -21,8 +22,8 @@ public class Celular extends PanacheEntity {
     }
 
     public String modelo;
-    public BigDecimal preco;
     public String marca;
+    public BigDecimal preco;
     public BigDecimal custoBeneficio;
     public BigDecimal notaHardware;
     public String sistemaOperacional;
@@ -30,6 +31,7 @@ public class Celular extends PanacheEntity {
     public Integer processadorNucleos;
     public BigDecimal processadorClock;
     public String displayTamanho;
-    public BigDecimal displayResolucao;
+    public String displayResolucao;
+    public String urlImagem;
 
 }
