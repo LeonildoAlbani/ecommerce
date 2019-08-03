@@ -11,8 +11,6 @@ services:
       - ecommerce-backend
     ports:
       - "80:80/tcp"
-#    volumes:
-#      - ${PWD}/volumes/frontend/default.conf:/etc/nginx/conf.d/default.conf
 
   ecommerce-backend:
     container_name: ecommerce-backend
@@ -23,8 +21,6 @@ services:
       - ecommerce-banco
     ports:
       - "8080:8080/tcp"
-#    depends_on:
-#      - ecommerce-banco
 
   ecommerce-banco:
     container_name: ecommerce-banco

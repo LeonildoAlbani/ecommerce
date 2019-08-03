@@ -18,7 +18,7 @@ import java.util.List;
 public class CelularResource {
 
     @GET
-    public List<Celular> hello() {
+    public List<Celular> listAll() {
         return Celular.listAll();
     }
 
@@ -29,21 +29,4 @@ public class CelularResource {
         celular.persist();
         return Response.ok(celular).build();
     }
-
-//    @Provider
-//    public static class ErrorMapper implements ExceptionMapper<Exception> {
-//
-//        @Override
-//        public Response toResponse(Exception exception) {
-//            int code = 500;
-//            if (exception instanceof WebApplicationException) {
-//                code = ((WebApplicationException) exception).getResponse().getStatus();
-//            }
-//            return Response.status(code)
-//                    //Corrigir tratamento
-////                    .entity(Json.createObjectBuilder().add("error", exception.getMessage()).add("code", code).build())
-//                    .build();
-//        }
-//
-//    }
 }
