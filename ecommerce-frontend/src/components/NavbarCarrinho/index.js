@@ -1,7 +1,5 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-import * as Actions from "../../store/actions";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
@@ -23,6 +21,4 @@ const mapStateToProps = state => ({
     carrinho: state.carrinho
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(Actions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavbarCarrinho)
+export default connect(mapStateToProps)(NavbarCarrinho)
