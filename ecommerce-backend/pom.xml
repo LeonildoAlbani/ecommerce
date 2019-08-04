@@ -9,8 +9,8 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <surefire-plugin.version>2.22.0</surefire-plugin.version>
     <quarkus.version>0.20.0</quarkus.version>
-    <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
   <dependencyManagement>
@@ -25,8 +25,6 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
-
-    <!-- Quarkus -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy</artifactId>
@@ -43,22 +41,10 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-jdbc-postgresql</artifactId>
     </dependency>
-
-    <!-- MediaType Json nos resources-->
-    <!--<dependency>-->
-      <!--<groupId>org.glassfish</groupId>-->
-      <!--<artifactId>javax.json</artifactId>-->
-      <!--<version>1.1.4</version>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-      <!--<groupId>org.jboss.resteasy</groupId>-->
-      <!--<artifactId>resteasy-jackson2-provider</artifactId>-->
-      <!--<version>3.0.19.Final</version>-->
-    <!--</dependency>-->
-
-
-    <!-- Teste -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-search-elasticsearch</artifactId>
+    </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>

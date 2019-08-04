@@ -33,15 +33,12 @@ services:
     ports:
       - "15432:5432/tcp"
 
-
-#      quarkus:
-#        datasource:
-#          url: "jdbc:postgresql://ecommerce-banco:15432/ecommerce"
-#          driver: "org.postgresql.Driver"
-#          username: "postgres"
-#          password: "postgres"
-#        hibernate-orm:
-#          database:
-#            generation: "update"
-#          log:
-#            sql: true
+  ecommerce-elasticsearch: #Instância do elasticsearch dockerizada para teste
+    container_name: ecommerce-elasticsearch
+    hostname: ecommerce-elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.0.1
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node

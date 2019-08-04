@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
+import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 /**
@@ -16,12 +19,15 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
  * @since 1.0 (31/07/2019)
  */
 @Entity
+@Indexed
 public class Celular extends PanacheEntity {
 
     public Celular() {
     }
 
+    @FullTextField(analyzer = "standard") //analizador padrão provido pelo quarkus
     public String modelo;
+    @FullTextField(analyzer = "standard") //analizador padrão provido pelo quarkus
     public String marca;
     public BigDecimal preco;
     public BigDecimal custoBeneficio;
