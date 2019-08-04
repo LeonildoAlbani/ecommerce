@@ -98,8 +98,6 @@ const Preco = ({preco}) => {
     return null;
 };
 
-
-
 const mapStateToProps = state => ({
     celulares: state.celulares,
     carrinho: state.carrinho

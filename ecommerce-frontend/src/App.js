@@ -5,6 +5,7 @@ import 'font-awesome/css/font-awesome.min.css';
 
 import Homepage from "./components/Homepage";
 import Carrinho from "./components/Carrinho";
+import NavbarCarrinho from "./components/NavbarCarrinho";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     />
 
                 </header>
+                <NavbarCarrinho/>
                 <Homepage/>
                 <Carrinho/>
             </Provider>
