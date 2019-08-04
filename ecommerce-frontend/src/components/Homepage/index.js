@@ -10,9 +10,11 @@ import Image from "react-bootstrap/Image";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import './homepage.css';
 import Icon from "../Icon";
+import Busca from "../Busca"
 
 const Homepage = ({celulares, adicionarNoCarrinho}) => (
     <Jumbotron>
+        <Busca/>
         {celulares.length > 0 ? celulares.map(celular => {
             return (
                 <Row className="linha" key={celular.id}>
