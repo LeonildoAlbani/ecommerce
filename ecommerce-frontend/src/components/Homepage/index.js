@@ -11,9 +11,8 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import './homepage.css';
 import Icon from "../Icon";
 
-const Homepage = ({celulares, carrinho, adicionarNoCarrinho}) => (
+const Homepage = ({celulares, adicionarNoCarrinho}) => (
     <Jumbotron>
-        {JSON.stringify(carrinho)}
         {celulares.length > 0 ? celulares.map(celular => {
             return (
                 <Row className="linha" key={celular.id}>
@@ -100,7 +99,6 @@ const Preco = ({preco}) => {
 
 const mapStateToProps = state => ({
     celulares: state.celulares,
-    carrinho: state.carrinho
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(Actions, dispatch);
