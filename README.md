@@ -9,7 +9,7 @@ Com base na estrutura criada e as funcionalidades desenvolvidas, montar ao menos
 - Necessidades adicionais de estrutura e ferramentas;
 
 
-## Requisitos técnicos:
+## Requisitos técnicos
 - Os serviços devem ser feitos usando Quarkus;
 - As interfaces devem ser feitas em ReactJS;
 - Preferencialmente utilizar Docker para subir a stack;
@@ -45,3 +45,12 @@ de alguns dados de forma mais sintetizada, por exemplo: menos detalhes nas forma
 
 ### 2ª ideia: Custo X Benefício por avaliação na plataforma + WebScrapping de outros sites
 Se sobrar tempo vou detalhar
+
+## Tarefas a fazer
+- Fazer pesquisa por descrição (back e front)
+- Criar quantidade no carrinho + action respeitar quantidade
+- Criar modal do carrinho de compras
+- Fazer gravação de compras no backend
+- Criar combo básico de forma de pagamento
+- Fazer validação de campos na gravação de compras no backend
+- Fazer testes unitários no backend + ver por que não roda o import.sql :(
