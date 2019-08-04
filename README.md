@@ -1,6 +1,6 @@
 # E-Commerce de celulares
 
-##Requisitos
+## Requisitos
 Desenvolver um serviço de compras, com opção de buscar os produtos e efetuar uma compra.
 Com base na estrutura criada e as funcionalidades desenvolvidas, montar ao menos uma proposta de extração de informações ou BI, cada qual contendo:
 - Quais informações serão extraídas e apresentadas;
@@ -9,15 +9,15 @@ Com base na estrutura criada e as funcionalidades desenvolvidas, montar ao menos
 - Necessidades adicionais de estrutura e ferramentas;
 
 
-Requisitos técnicos:
+## Requisitos técnicos:
 - Os serviços devem ser feitos usando Quarkus;
 - As interfaces devem ser feitas em ReactJS;
 - Preferencialmente utilizar Docker para subir a stack;
 - Disponibilizar os códigos no GitHub, e instruções para rodar localmente o projeto;
 
-##Ideias para BI
+## Ideias para BI
 
-###1ª ideia: Guardar conteúdo pesquisado
+### 1ª ideia: Guardar conteúdo pesquisado
 #### Quais informações serão extraídas?
 - Todo o conteúdo de texto pesquisado na plataforma, com no mínimo data e hora da pesquisa, assim como a navegação posterior 
 (se adicionou algum produto no carrinho ou se fez uma pesquisa diferente).
@@ -43,5 +43,5 @@ de alguns dados de forma mais sintetizada, por exemplo: menos detalhes nas forma
 - Um frontend para visualização dessas informações + backend simples para busca dos dados já sintetizados.
 - Utilizar ferramentas para ETL free (existem opções boas para se iniciar) por exemplo: Pentaho.
 
-###2ª ideia: Custo X Benefício por avaliação na plataforma + WebScrapping de outros sites
+### 2ª ideia: Custo X Benefício por avaliação na plataforma + WebScrapping de outros sites
 Se sobrar tempo vou detalhar
