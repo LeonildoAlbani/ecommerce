@@ -42,7 +42,7 @@ public class CelularResource {
     @Path("/busca")
     public List<Celular> busca(@QueryParam("busca") String busca) {
 
-        //Como selecionar as palavras parcialmente?
+        //Como selecionar as palavras parcialmente? Talvez com um analizer diferente?
         return Search.session(em)
             .search(Celular.class)
             .predicate(f ->
