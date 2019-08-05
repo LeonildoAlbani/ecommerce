@@ -6,6 +6,8 @@ import './busca.css'
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 
+//Exemplo de class component (a pouco tempo descobri functional components e gostei mais)
+//Mas fica aqui só a nível de exemplo mesmo :)
 class Busca extends React.Component {
     constructor(props) {
         super(props);
@@ -26,14 +28,13 @@ class Busca extends React.Component {
     }
 
     handleKeyPress(target) {
-        if (target.charCode === 13) {
+        if (target.charCode === 13) /*enter*/ {
             this.onClickOrEnter()
         }
     }
 
     onSubmit(event){
         event.preventDefault();
-        console.log("passou");
     }
 
     render() {

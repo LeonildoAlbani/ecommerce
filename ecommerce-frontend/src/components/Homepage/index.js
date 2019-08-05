@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
-
 import {Button} from "react-bootstrap";
 import * as Actions from '../../store/actions';
 import Row from "react-bootstrap/Row";

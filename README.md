@@ -47,10 +47,9 @@ de alguns dados de forma mais sintetizada, por exemplo: menos detalhes nas forma
 Se sobrar tempo vou detalhar
 
 ## Tarefas a fazer
-- Fazer pesquisa por descrição (back e front)
 - Criar quantidade no carrinho + action respeitar quantidade
 - Criar modal do carrinho de compras
 - Fazer gravação de compras no backend
 - Criar combo básico de forma de pagamento
 - Fazer validação de campos na gravação de compras no backend
-- Fazer testes unitários no backend + ver por que não roda o import.sql :(
+- Fazer testes unitários no backend
