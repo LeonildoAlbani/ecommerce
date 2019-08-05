@@ -52,6 +52,15 @@ public class CelularResource {
     }
 
     @GET
+    @Path("/busca-sem-elasticsearch")
+    public List<Celular> buscaSemElasticsearch(@QueryParam("busca") String busca) {
+
+        return Celular.list(
+            "upper(modelo) like upper('%' || ?1 || '%') or upper(marca) like upper('%' || ?1 || '%')",
+            busca);
+    }
+
+    @GET
     public List<Celular> listAll() {
         return Celular.listAll();
     }

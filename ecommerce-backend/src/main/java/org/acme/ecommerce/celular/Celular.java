@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 
+import org.acme.ecommerce.compra.Compra;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextField;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 
@@ -40,4 +41,16 @@ public class Celular extends PanacheEntity {
     public String displayResolucao;
     public String urlImagem;
 
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    /**
+     * Override de equals e hashCode para usar Set no objeto {@link Compra}.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Celular && this.hashCode() == obj.hashCode();
+    }
 }

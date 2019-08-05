@@ -4,9 +4,12 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Icon from "../Icon";
 import Form from "react-bootstrap/Form";
-import ListGroup from "react-bootstrap/ListGroup";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Image from "react-bootstrap/Image";
+import Container from "react-bootstrap/Container";
+import * as formatter from "../../commons/formatter";
+import './carrinho.css'
 
 const Carrinho = ({carrinho}) => {
 
@@ -41,7 +44,7 @@ const ButtonCarrinho = ({carrinho, setModalShow}) => {
             </Button>
         );
     }
-}
+};
 
 const ModalCarrinho = (props) => {
     return (
@@ -56,25 +59,22 @@ const ModalCarrinho = (props) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Celulares adicionados</h4>
-                <ListGroup>
+                <Container>
                     {props.carrinho.map(itemCarrinho =>(
-                        <Row>
-                            <Col xs={6}>
-                                {itemCarrinho.marca} {itemCarrinho.modelo}
-                            </Col>
+                        <Row key={itemCarrinho.id} className="linha-carrinho">
                             <Col xs={2}>
-                                Quantidade
+                                <Image style={{width: "60px", height: "120px"}} src={itemCarrinho.urlImagem}/>
                             </Col>
-                            <Col xs={2}>
-                                {itemCarrinho.preco}
+                            <Col xs={7} className="vertical-center">
+                                <h4>{itemCarrinho.marca} {itemCarrinho.modelo}</h4>
                             </Col>
-                            <Col xs={2}>
-                                <Button>Remover</Button>
+                            <Col xs={3} className="vertical-center">
+                                <h4>{formatter.formatMoney(itemCarrinho.preco)}</h4>
                             </Col>
                         </Row>
                     ))}
-                </ListGroup>
+                    <Totalizador carrinho={props.carrinho}/>
+                </Container>
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Comprar</Button>
@@ -82,4 +82,12 @@ const ModalCarrinho = (props) => {
         </Modal>
     )
 };
+
+const Totalizador = ({carrinho}) => (
+    <Row>
+        <Col xs={{span: 3, offset: 9}}>
+            <h4>{formatter.formatMoney(carrinho.reduce((sum, item)=>sum+=item.preco, 0))}</h4>
+        </Col>
+    </Row>
+);
 export default connect(state => ({carrinho: state.carrinho}))(Carrinho);

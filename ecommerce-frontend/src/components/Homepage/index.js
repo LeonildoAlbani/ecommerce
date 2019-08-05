@@ -10,8 +10,9 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import './homepage.css';
 import Icon from "../Icon";
 import Busca from "../Busca"
+import * as formatter from "../../commons/formatter";
 
-const Homepage = ({celulares, adicionarNoCarrinho}) => (
+const Homepage = ({celulares, carrinho, adicionarNoCarrinho}) => (
     <Jumbotron>
         <Busca/>
         {celulares.length > 0 ? celulares.map(celular => {
@@ -37,7 +38,10 @@ const Homepage = ({celulares, adicionarNoCarrinho}) => (
                     <Col xs={2}>
                         <Preco preco={celular.preco}/>
                     </Col><Col xs={1}>
-                    <Button variant="primary" onClick={() => adicionarNoCarrinho(celular)}>Comprar</Button>
+                    <BotaoComprar
+                        carrinho={carrinho}
+                        celular={celular}
+                        adicionarNoCarrinho={adicionarNoCarrinho}/>
                 </Col>
                 </Row>
             )
@@ -91,15 +95,25 @@ const Preco = ({preco}) => {
     if (preco) {
         return (
             <div>
-                <h5>R$ {preco.toFixed(2).replace(".", ",")}</h5>
+                <h5>{formatter.formatMoney(preco)}</h5>
             </div>
         )
     }
     return null;
 };
 
+const BotaoComprar = ({carrinho, celular, adicionarNoCarrinho}) => {
+    //Atualmente que não há paginação, não é muito legal fazer esse find, mas com uma paginação feita, o custo dele não é tão grande
+    if (!carrinho.find(el => (el.id === celular.id))) {
+        return <Button variant="primary" onClick={() => adicionarNoCarrinho(celular)}>Comprar</Button>
+    } else {
+        return <span>Celular no carrinho</span>
+    }
+};
+
 const mapStateToProps = state => ({
     celulares: state.celulares,
+    carrinho: state.carrinho
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(Actions, dispatch);

@@ -29,3 +29,17 @@ export function buscarListaCelulares(busca) {
         });
     });
 }
+
+// export function gravarCompra(carrinho) {
+//     store.dispatch((dispatch) => {
+//
+//         return api.get("/celular/busca?busca="+busca)
+//         .then(response => {
+//             dispatch(atualizarListaCelulares(response));
+//         })
+//         .catch(error => {
+//             console.error(error);
+//             dispatch(atualizarListaCelulares([]));
+//         });
+//     });
+// }

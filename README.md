@@ -47,9 +47,9 @@ de alguns dados de forma mais sintetizada, por exemplo: menos detalhes nas forma
 Se sobrar tempo vou detalhar
 
 ## Tarefas a fazer
-- Criar quantidade no carrinho + action respeitar quantidade
-- Criar modal do carrinho de compras
 - Fazer gravação de compras no backend
+
 - Criar combo básico de forma de pagamento
 - Fazer validação de campos na gravação de compras no backend
 - Fazer testes unitários no backend
+- Gravar quantidade de cada celular na venda

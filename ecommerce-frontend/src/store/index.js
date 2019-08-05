@@ -14,9 +14,16 @@ function reducer(state = INITIAL_STATE, action) {
 
     switch (action.type) {
         case 'ADICIONAR_NO_CARRINHO':
-            return {...state, carrinho: [...state.carrinho, action.celular]};
+            //Só adiciona no carrinho se não está adicionado
+            if (!state.carrinho.find(el => (el.id === action.celular.id))) {
+                return {...state, carrinho: [...state.carrinho, action.celular]};
+            }
+            return state;
         case 'ATUALIZAR_LISTA_CELULARES':
             return {...state, celulares: [...action.celulares]};
+        case 'GRAVAR_COMPRA':
+            //TODO
+            return {...state, carrinho: []};
         default:
             return state
     }
