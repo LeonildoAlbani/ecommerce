@@ -27,8 +27,14 @@ export function limparCarrinho() {
     }
 }
 
-export function buscarListaCelulares(busca) {
-    return actionAssincrona(api.get("/celular/busca?busca="+busca), atualizarListaCelulares, atualizarListaCelulares([]))
+export function buscarListaCelulares(busca, elasticSearch) {
+    let url = "/celular/busca-sem-elasticsearch?busca="+busca;
+
+    if (elasticSearch) {
+        url = "/celular/busca?busca="+busca
+    }
+    return actionAssincrona(api.get(url), atualizarListaCelulares, atualizarListaCelulares([]))
+
 }
 
 export function gravarCompra(compra) {

@@ -89,14 +89,6 @@ const ModalCarrinho = ({onComprar, alterarNomeCliente, ...props}) => {
                                       value={props.compra.nomeCliente}
                                       onChange={onChange.bind(this, alterarNomeCliente)}/>
                     </Form.Group>
-                    <Form.Group controlId="compra.formaPagamento">
-                        <Form.Label>Example select</Form.Label>
-                        <Form.Control as="select">
-                            <option>Cartão de débito</option>
-                            <option>Cartão de crédito</option>
-                            <option>Boleto bancário</option>
-                        </Form.Control>
-                    </Form.Group>
                 </Container>
             </Modal.Body>
             <Modal.Footer>

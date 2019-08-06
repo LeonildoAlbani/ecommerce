@@ -1,7 +1,7 @@
-.campo-busca{
-    width: 300px !important;
+.container-pesquisa{
+    margin: 0 0 36px 0 !important;
 }
 
-.formulario{
-    margin-bottom: 20px;
+.last-row-pesquisa {
+    margin-top: 18px;
 }
