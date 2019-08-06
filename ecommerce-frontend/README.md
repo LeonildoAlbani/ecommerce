@@ -1,10 +1,17 @@
-####Rodar projeto
-`npm install`
+## Procedimentos para rodar o projeto localmente
 
-`npm start`
+Pré-requisitos:
 
-####Buildar docker
-`docker build -f Dockerfile -t leonildoalbani/ecommerce-frontend .`
+- Node instalado (usei a 10.15.3)
+- NPM instalado (usei a 6.4.1)
 
-####Enviar docker para hub
-`docker push leonildoalbani/ecommerce-frontend`
+Como rodar localmente?
+- `npm install`
+- `npm start`
+
+## Procedimentos para build:
+- Buildar o fonte do front do react (já faz no Dockerfile): `npm run build`
+
+- Executar o build do docker: `docker build -f Dockerfile -t leonildoalbani/ecommerce-frontend .`
+
+- Caso queiram fazer o push, colocar vossos repositórios: `docker push leonildoalbani/ecommerce-frontend`

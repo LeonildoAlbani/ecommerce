@@ -15,6 +15,8 @@ Com base na estrutura criada e as funcionalidades desenvolvidas, montar ao menos
 - Preferencialmente utilizar Docker para subir a stack;
 - Disponibilizar os códigos no GitHub, e instruções para rodar localmente o projeto;
 
+---
+
 ## Ideias para BI
 
 ### 1ª ideia: Guardar conteúdo pesquisado
@@ -46,15 +48,30 @@ de alguns dados de forma mais sintetizada, por exemplo: menos detalhes nas forma
 ### 2ª ideia: Custo X Benefício por avaliação na plataforma + WebScrapping de outros sites
 Se sobrar tempo vou detalhar
 
-## Tarefas a fazer
-- Fazer testes unitários no backend
-- Criar toast de gravação efetuada com sucesso
-- Criar combo básico de forma de pagamento
-- Fazer validação de campos na gravação de compras no backend
-- Faer webscrapping pra carregar dados
+---
 
-## Tarefas que poderiam ter sido feitas
+## Rodar o projeto
+
+Pré-requisitos:
+- Docker instalado (testei com a 19.03.1)
+- Docker-compose instalado (testei com a 1.24.1)
+
+Como rodar localmente?
+- `docker-compose up -d`
+
+Obs: caso queiram rodar os projetos via código fonte, seguir o Readme de cada projeto.
+
+---
+
+#### Tarefas a fazer
+- Fazer testes unitários no backend
+- Fazer webscrapping pra carregar dados
+- Criar toast de gravação efetuada com sucesso
+
+#### Tarefas que poderiam ter sido feitas
 - Dividir a store com mais reducers
 - Responsividade, o react-bootstrap ajuda bastante nisso
 - Paginação
 - Gravar quantidade de cada celular na venda (demandaria controle da relação many-to-many, para simplificar deixei sem)
+- Criar combo básico de forma de pagamento
+- Fazer validação de campos na gravação de compras no backend

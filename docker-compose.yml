@@ -2,26 +2,26 @@ version: '0.5'
 
 services:
 
-#  ecommerce-frontend:
-#    container_name: ecommerce-frontend
-#    hostname: ecommerce-frontend
-#    image: leonildoalbani/ecommerce-frontend:latest
-#    restart: always
-#    links:
-#      - ecommerce-backend
-#    ports:
-#      - "80:80/tcp"
-#
-#  ecommerce-backend:
-#    container_name: ecommerce-backend
-#    hostname: ecommerce-backend
-#    image: leonildoalbani/ecommerce-backend:latest
-#    restart: always
-#    links:
-#      - ecommerce-banco
-#      - ecommerce-elasticsearch
-#    ports:
-#      - "8080:8080/tcp"
+  ecommerce-frontend:
+    container_name: ecommerce-frontend
+    hostname: ecommerce-frontend
+    image: leonildoalbani/ecommerce-frontend:latest
+    restart: always
+    links:
+      - ecommerce-backend
+    ports:
+      - "80:80/tcp"
+
+  ecommerce-backend:
+    container_name: ecommerce-backend
+    hostname: ecommerce-backend
+    image: leonildoalbani/ecommerce-backend:latest
+    restart: always
+    links:
+      - ecommerce-banco
+      - ecommerce-elasticsearch
+    ports:
+      - "8080:8080/tcp"
 
   ecommerce-elasticsearch: #Instância do elasticsearch dockerizada para teste
     container_name: ecommerce-elasticsearch
