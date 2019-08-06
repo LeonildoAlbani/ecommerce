@@ -11,8 +11,9 @@ import Container from "react-bootstrap/Container";
 import * as formatter from "../../commons/formatter";
 import './carrinho.css'
 import * as Actions from "../../store/actions";
+import {bindActionCreators} from "redux";
 
-const Carrinho = ({compra}) => {
+const Carrinho = ({compra, alterarNomeCliente}) => {
 
     const [modalShow, setModalShow] = React.useState(false);
 
@@ -24,8 +25,10 @@ const Carrinho = ({compra}) => {
 
             <ModalCarrinho
                 show={modalShow}
-                onHide={onComprar.bind(this, compra, setModalShow)}
-                carrinho={compra.celulares}/>
+                onComprar={onComprar.bind(this, compra, setModalShow)}
+                onHide={()=>{setModalShow(false)}}
+                compra={compra}
+                alterarNomeCliente={alterarNomeCliente}/>
         </Form>
     )
 };
@@ -47,7 +50,7 @@ const ButtonCarrinho = ({carrinho, setModalShow}) => {
     }
 };
 
-const ModalCarrinho = (props) => {
+const ModalCarrinho = ({onComprar, alterarNomeCliente, ...props}) => {
     return (
         <Modal
             {...props}
@@ -61,7 +64,7 @@ const ModalCarrinho = (props) => {
             </Modal.Header>
             <Modal.Body>
                 <Container>
-                    {props.carrinho.map(itemCarrinho =>(
+                    {props.compra.celulares.map(itemCarrinho => (
                         <Row key={itemCarrinho.id} className="linha-carrinho">
                             <Col xs={2}>
                                 <Image style={{width: "60px", height: "120px"}} src={itemCarrinho.urlImagem}/>
@@ -74,23 +77,50 @@ const ModalCarrinho = (props) => {
                             </Col>
                         </Row>
                     ))}
-                    <Totalizador carrinho={props.carrinho}/>
+                    <Totalizador celulares={props.compra.celulares}/>
+                </Container>
+                <hr/>
+                <Container>
+                    <h3>Dados para comprar</h3>
+                    <Form.Group controlId="compra.nomeCliente">
+                        <Form.Label>Nome</Form.Label>
+                        <Form.Control type="text"
+                                      placeholder="João da Silva"
+                                      value={props.compra.nomeCliente}
+                                      onChange={onChange.bind(this, alterarNomeCliente)}/>
+                    </Form.Group>
+                    <Form.Group controlId="compra.formaPagamento">
+                        <Form.Label>Example select</Form.Label>
+                        <Form.Control as="select">
+                            <option>Cartão de débito</option>
+                            <option>Cartão de crédito</option>
+                            <option>Boleto bancário</option>
+                        </Form.Control>
+                    </Form.Group>
                 </Container>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Comprar</Button>
+                <Button onClick={onComprar}>Comprar</Button>
             </Modal.Footer>
         </Modal>
     )
 };
 
-const Totalizador = ({carrinho}) => (
+//Criado apenas para não passar o acoplamento de ter evento.target.value para a action
+function onChange(alterarNomeCliente, evento) {
+    console.log(evento, alterarNomeCliente);
+    let valor = evento.target.value;
+
+    alterarNomeCliente(valor);
+}
+
+const Totalizador = ({celulares}) => (
     <Row>
         <Col xs={{span: 1, offset: 8}}>
             <h4>Total:</h4>
         </Col>
         <Col xs={3}>
-            <h4>{formatter.formatMoney(carrinho.reduce((sum, item)=>sum+=item.preco, 0))}</h4>
+            <h4>{formatter.formatMoney(celulares.reduce((sum, item) => sum += item.preco, 0))}</h4>
         </Col>
     </Row>
 );
@@ -103,5 +133,6 @@ const onComprar = (compra, setModalShow) => {
 const mapStateToProps = state => ({
     compra: state.compra
 });
+const mapDispatchToProps = dispatch => bindActionCreators(Actions, dispatch);
 
-export default connect(mapStateToProps)(Carrinho);
+export default connect(mapStateToProps, mapDispatchToProps)(Carrinho);

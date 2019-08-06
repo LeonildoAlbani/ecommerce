@@ -28,6 +28,8 @@ function reducer(state = INITIAL_STATE, action) {
             return {...state, celulares: [...action.celulares]};
         case 'LIMPAR_CARRINHO':
             return {...state, compra: INITIAL_STATE_COMPRA};
+        case 'ALTERAR_NOME_CLIENTE':
+            return {...state, compra: {...state.compra, nomeCliente: action.nomeCliente}};
         default:
             return state
     }

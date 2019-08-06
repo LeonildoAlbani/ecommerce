@@ -8,6 +8,13 @@ export function adicionarNoCarrinho(celular) {
     }
 }
 
+export function alterarNomeCliente(nomeCliente) {
+    return {
+        type: 'ALTERAR_NOME_CLIENTE',
+        nomeCliente
+    }
+}
+
 export function atualizarListaCelulares(celulares) {
     return {
         type: 'ATUALIZAR_LISTA_CELULARES',

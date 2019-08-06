@@ -48,11 +48,11 @@ Se sobrar tempo vou detalhar
 
 ## Tarefas a fazer
 - Criar toast de gravação efetuada com sucesso
-- Criar campo de nome do cliente
 - Criar combo básico de forma de pagamento
 - Fazer validação de campos na gravação de compras no backend
 - Fazer testes unitários no backend
 
 ## Tarefas que poderiam ter sido feitas
+- Dividir a store com mais reducers
 - Paginação
 - Gravar quantidade de cada celular na venda (demandaria controle da relação many-to-many, para simplificar deixei sem)
