@@ -113,7 +113,7 @@ const BotaoComprar = ({carrinho, celular, adicionarNoCarrinho}) => {
 
 const mapStateToProps = state => ({
     celulares: state.celulares,
-    carrinho: state.carrinho
+    carrinho: state.compra.celulares /*exemplo de prop mapeada com nome diferente em componente*/
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(Actions, dispatch);

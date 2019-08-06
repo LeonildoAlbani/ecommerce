@@ -47,9 +47,10 @@ de alguns dados de forma mais sintetizada, por exemplo: menos detalhes nas forma
 Se sobrar tempo vou detalhar
 
 ## Tarefas a fazer
-- Fazer gravação de compras no backend
-
+- Criar toast de gravação efetuada com sucesso
 - Criar combo básico de forma de pagamento
 - Fazer validação de campos na gravação de compras no backend
 - Fazer testes unitários no backend
-- Gravar quantidade de cada celular na venda
+
+## Tarefas que poderiam ter sido feitas
+- Gravar quantidade de cada celular na venda (demandaria controle da relação many-to-many, para simplificar deixei sem)

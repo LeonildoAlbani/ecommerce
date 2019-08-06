@@ -14,6 +14,11 @@ export function atualizarListaCelulares(celulares) {
         celulares
     }
 }
+export function limparCarrinho() {
+    return {
+        type: 'LIMPAR_CARRINHO'
+    }
+}
 
 //Tem como fazer isso de uma forma mais "elegante"? :/
 export function buscarListaCelulares(busca) {
@@ -30,16 +35,15 @@ export function buscarListaCelulares(busca) {
     });
 }
 
-// export function gravarCompra(carrinho) {
-//     store.dispatch((dispatch) => {
-//
-//         return api.get("/celular/busca?busca="+busca)
-//         .then(response => {
-//             dispatch(atualizarListaCelulares(response));
-//         })
-//         .catch(error => {
-//             console.error(error);
-//             dispatch(atualizarListaCelulares([]));
-//         });
-//     });
-// }
+export function gravarCompra(compra) {
+    store.dispatch((dispatch) => {
+
+        return api.post("/compra", JSON.stringify(compra))
+        .then(response => {
+            dispatch(limparCarrinho());
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    });
+}

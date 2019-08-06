@@ -1,3 +1,5 @@
+//Essa classe eu já havia escrito há algum tempo, resolvi aproveitar no projeto.
+
 // const urlBase = '/api';
 const urlBase = 'http://localhost:8080';
 

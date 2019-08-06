@@ -10,21 +10,22 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import * as formatter from "../../commons/formatter";
 import './carrinho.css'
+import * as Actions from "../../store/actions";
 
-const Carrinho = ({carrinho}) => {
+const Carrinho = ({compra}) => {
 
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <Form inline>
             <ButtonCarrinho
-                carrinho={carrinho}
+                carrinho={compra.celulares}
                 setModalShow={setModalShow}/>
 
             <ModalCarrinho
                 show={modalShow}
-                onHide={() => setModalShow(false)}
-                carrinho={carrinho}/>
+                onHide={onComprar.bind(this, compra, setModalShow)}
+                carrinho={compra.celulares}/>
         </Form>
     )
 };
@@ -85,9 +86,22 @@ const ModalCarrinho = (props) => {
 
 const Totalizador = ({carrinho}) => (
     <Row>
-        <Col xs={{span: 3, offset: 9}}>
+        <Col xs={{span: 1, offset: 8}}>
+            <h4>Total:</h4>
+        </Col>
+        <Col xs={3}>
             <h4>{formatter.formatMoney(carrinho.reduce((sum, item)=>sum+=item.preco, 0))}</h4>
         </Col>
     </Row>
 );
-export default connect(state => ({carrinho: state.carrinho}))(Carrinho);
+
+const onComprar = (compra, setModalShow) => {
+    Actions.gravarCompra(compra);
+    setModalShow(false);
+};
+
+const mapStateToProps = state => ({
+    compra: state.compra
+});
+
+export default connect(mapStateToProps)(Carrinho);
