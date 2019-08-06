@@ -20,30 +20,34 @@ export function limparCarrinho() {
     }
 }
 
-//Tem como fazer isso de uma forma mais "elegante"? :/
 export function buscarListaCelulares(busca) {
-    store.dispatch((dispatch) => {
-
-        return api.get("/celular/busca?busca="+busca)
-        .then(response => {
-            dispatch(atualizarListaCelulares(response));
-        })
-        .catch(error => {
-            console.error(error);
-            dispatch(atualizarListaCelulares([]));
-        });
-    });
+    return actionAssincrona(api.get("/celular/busca?busca="+busca), atualizarListaCelulares, atualizarListaCelulares([]))
 }
 
 export function gravarCompra(compra) {
-    store.dispatch((dispatch) => {
+    return actionAssincrona(api.post("/compra", JSON.stringify(compra)), limparCarrinho);
+}
 
-        return api.post("/compra", JSON.stringify(compra))
+/**
+ * Teria que dar uma melhorada para que funcione de forma melhor em uma ação na falha.
+ *
+ * @param acao promise que será executada
+ * @param sucesso ação após sucesso da promise, receberá o response por parametro
+ * @param falha ação após falha da promise, neste caso apenas um objeto já montado
+ */
+function actionAssincrona(acao, sucesso, falha) {
+    store.dispatch((dispatch) => {
+        return acao
         .then(response => {
-            dispatch(limparCarrinho());
+            if (sucesso) {
+                dispatch(sucesso(response));
+            }
         })
         .catch(error => {
             console.error(error);
-        });
-    });
+            if (falha) {
+                dispatch(falha);
+            }
+        })
+    })
 }

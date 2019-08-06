@@ -22,7 +22,6 @@ function App() {
                 </header>
                 <NavbarCarrinho/>
                 <Homepage/>
-                <Carrinho/>
             </Provider>
         </div>
     );
