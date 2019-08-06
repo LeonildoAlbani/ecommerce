@@ -58,6 +58,8 @@ Pré-requisitos:
 
 Como rodar localmente?
 - `docker-compose up -d`
+- Aguardem baixar os dockers e os services subirem (o elasticsearch demora alguns segundos para subir)
+- Após isso, acessar http://localhost
 
 Obs: caso queiram rodar os projetos via código fonte, seguir o Readme de cada projeto.
 
