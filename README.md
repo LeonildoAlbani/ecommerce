@@ -55,6 +55,7 @@ Se sobrar tempo vou detalhar
 Pré-requisitos:
 - Docker instalado (testei com a 19.03.1)
 - Docker-compose instalado (testei com a 1.24.1)
+- Conexão com internet (para o link das imagens)
 
 Como rodar localmente?
 - `docker-compose up -d`
@@ -65,12 +66,8 @@ Obs: caso queiram rodar os projetos via código fonte, seguir o Readme de cada p
 
 ---
 
-#### Tarefas a fazer
-- Fazer testes unitários no backend
-- Fazer webscrapping pra carregar dados
-- Criar toast de gravação efetuada com sucesso
-
 #### Tarefas que poderiam ter sido feitas
+- Criar toast de gravação efetuada com sucesso
 - Dividir a store com mais reducers
 - Responsividade, o react-bootstrap ajuda bastante nisso
 - Paginação
