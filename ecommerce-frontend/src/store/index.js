@@ -1,8 +1,9 @@
 import {applyMiddleware, createStore} from 'redux';
 import { default as thunk } from 'redux-thunk';
 import {createLogger } from 'redux-logger';
-import * as api from "../commons/api";
+import * as api from "../commons/Api";
 import * as Actions from "./actions";
+import * as Toast from '../commons/Toast';
 
 const INITIAL_STATE_COMPRA = {
     celulares: [],
@@ -21,6 +22,7 @@ function reducer(state = INITIAL_STATE, action) {
         case 'ADICIONAR_NO_CARRINHO':
             //Só adiciona no carrinho se não está adicionado
             if (!state.compra.celulares.find(el => (el.id === action.celular.id))) {
+                Toast.info("Produto adicionado no carrinho");
                 return {...state, compra: {...state.compra, celulares: [...state.compra.celulares, action.celular] }};
             }
             return state;

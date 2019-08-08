@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
-import * as formatter from "../../commons/formatter";
+import * as Formatter from "../../commons/Formatter";
 import './carrinho.css'
 import * as Actions from "../../store/actions";
 import {bindActionCreators} from "redux";
@@ -73,7 +73,7 @@ const ModalCarrinho = ({onComprar, alterarNomeCliente, ...props}) => {
                                 <h4>{itemCarrinho.marca} {itemCarrinho.modelo}</h4>
                             </Col>
                             <Col xs={3} className="vertical-center">
-                                <h4>{formatter.formatMoney(itemCarrinho.preco)}</h4>
+                                <h4>{Formatter.formatMoney(itemCarrinho.preco)}</h4>
                             </Col>
                         </Row>
                     ))}
@@ -112,7 +112,7 @@ const Totalizador = ({celulares}) => (
             <h4>Total:</h4>
         </Col>
         <Col xs={3}>
-            <h4>{formatter.formatMoney(celulares.reduce((sum, item) => sum += item.preco, 0))}</h4>
+            <h4>{Formatter.formatMoney(celulares.reduce((sum, item) => sum += item.preco, 0))}</h4>
         </Col>
     </Row>
 );

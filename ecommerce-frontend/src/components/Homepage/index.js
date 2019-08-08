@@ -10,7 +10,7 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import './homepage.css';
 import Icon from "../Icon";
 import Busca from "../Busca"
-import * as formatter from "../../commons/formatter";
+import * as Formatter from "../../commons/Formatter";
 
 const Homepage = ({celulares, carrinho, adicionarNoCarrinho}) => (
     <Jumbotron>
@@ -95,7 +95,7 @@ const Preco = ({preco}) => {
     if (preco) {
         return (
             <div>
-                <h5>{formatter.formatMoney(preco)}</h5>
+                <h5>{Formatter.formatMoney(preco)}</h5>
             </div>
         )
     }

@@ -1,4 +1,5 @@
-import * as api from "../../commons/api";
+import * as api from "../../commons/Api";
+import * as Toast from "../../commons/Toast";
 import store from "../../store";
 
 export function adicionarNoCarrinho(celular) {
@@ -38,9 +39,13 @@ export function buscarListaCelulares(busca, elasticSearch) {
 }
 
 export function gravarCompra(compra) {
-    return actionAssincrona(api.post("/compra", JSON.stringify(compra)), limparCarrinho);
+    return actionAssincrona(api.post("/compra", JSON.stringify(compra)), sucessoGravarCompra);
 }
 
+function sucessoGravarCompra(response) {
+    Toast.success("Compra gravada com sucesso");
+    return limparCarrinho(response)
+}
 /**
  * Teria que dar uma melhorada para que funcione de forma melhor em uma ação na falha.
  *
