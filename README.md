@@ -67,7 +67,6 @@ Obs: caso queiram rodar os projetos via código fonte, seguir o Readme de cada p
 ---
 
 #### Tarefas que poderiam ter sido feitas com mais tempo
-- Criar toast de gravação efetuada com sucesso
 - Dividir a store com mais reducers
 - Responsividade, o react-bootstrap ajuda bastante nisso
 - Paginação
