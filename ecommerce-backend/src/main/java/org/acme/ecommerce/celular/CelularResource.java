@@ -10,8 +10,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+import org.acme.ecommerce.commons.ResponseEntity;
 import org.hibernate.search.mapper.orm.Search;
 
+import io.quarkus.hibernate.orm.panache.PanacheQuery;
+import io.quarkus.panache.common.Page;
 import io.quarkus.runtime.StartupEvent;
 
 /**
@@ -25,51 +28,34 @@ import io.quarkus.runtime.StartupEvent;
 public class CelularResource {
 
     @Inject
-    EntityManager em;
-
-    @Transactional
-    void onStart(@Observes StartupEvent ev) throws InterruptedException {
-        // Como sempre insere novamente os dados ao reiniciar (import.sql) a documentação recomenda indexar
-        // Em produção não precisaria
-        if (Celular.count() > 0) {
-            Search.session(em)
-                .massIndexer()
-                .startAndWait();
-        }
-    }
+    CelularService celularService;
 
     @GET
     @Path("/busca")
     public List<Celular> busca(@QueryParam("busca") String busca) {
-
-        //Como selecionar as palavras parcialmente? Talvez com um analizer diferente?
-        return Search.session(em)
-            .search(Celular.class)
-            .predicate(f ->
-                f.simpleQueryString().onFields("modelo", "marca").matching(busca)
-            )
-            .fetchHits();
+        return celularService.buscaComElasticSearch(busca);
     }
 
     @GET
     @Path("/busca-sem-elasticsearch")
     public List<Celular> buscaSemElasticsearch(@QueryParam("busca") String busca) {
 
-        return Celular.list(
-            "upper(modelo) like upper('%' || ?1 || '%') or upper(marca) like upper('%' || ?1 || '%')",
-            busca);
+        return celularService.buscaSemElasticSearch(busca);
     }
 
     @GET
     public List<Celular> listAll() {
-        return Celular.listAll();
+        return celularService.listAll();
     }
+//    @GET
+//    public ResponseEntity<Celular> listAll() {
+//        return celularService.findAll();
+//    }
 
     @POST
     @Transactional
     public Response insert(Celular celular) {
-        celular.id = null;
-        celular.persist();
-        return Response.ok(celular).build();
+        Celular celularPersistido = celularService.insert(celular);
+        return Response.ok(celularPersistido).build();
     }
 }
